@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects | Wareesha Ameer Khan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <div class="loading-bar"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">W<span class="neon-dot">.</span>A<span class="neon-dot">.</span>K</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="projects-page">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h1>All <span class="neon-text">Projects</span></h1>
+                <div class="underline"></div>
+            </div>
+            <div class="projects-grid" id="allProjectsGrid"></div>
+        </div>
+    </main>
+
+    <footer class="footer-neon">
+        <div class="footer-neon-content">
+            <div class="footer-brand">
+                <h2>Wareesha <span class="neon-text">Ameer Khan</span></h2>
+                <p>Building the future, one line of code at a time.</p>
+            </div>
+            <div class="footer-neon-links">
+                <a href="https://github.com/WareeshaAmeerKhan" target="_blank" class="neon-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/wareeshaameerkhan/" class="neon-link">LinkedIn</a>
+                <a href="mailto:wareeshaameerkhan@gmail.com" class="neon-link">Email</a>
+            </div>
+        </div>
+        <div class="footer-neon-bottom">
+            <p>© 2026 Wareesha Ameer Khan. All rights reserved.</p>
+        </div>
+        <div class="footer-glow"></div>
+    </footer>
+
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <h2 id="modalTitle">Project Title</h2>
+                <div class="modal-tech" id="modalTech"></div>
+                <p id="modalDesc"></p>
+                <div class="modal-role" id="modalRole"></div>
+                <a href="https://github.com/WareeshaAmeerKhan" id="modalLink" class="btn btn-primary" target="_blank">View on GitHub →</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

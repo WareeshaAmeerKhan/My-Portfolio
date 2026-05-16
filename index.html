@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wareesha Ameer Khan | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <div class="loading-bar"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">W<span class="neon-dot">.</span>A<span class="neon-dot">.</span>K</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#featured" class="nav-link">Projects</a></li>
+                <li><a href="#about-preview" class="nav-link">About</a></li>
+                <li><a href="#skills-preview" class="nav-link">Skills</a></li>
+                <li><a href="#experience-preview" class="nav-link">Experience</a></li>
+                <li><a href="projects.html" class="page-link">All Projects →</a></li>
+                <li><a href="contact.html" class="page-link">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">CS Student @ UET Lahore</div>
+            <h1 class="neon-name">Wareesha Ameer Khan</h1>
+            <div class="typed-wrapper">
+                <span class="typed-text"></span>
+                <span class="cursor-blink">|</span>
+            </div>
+            <p class="hero-desc">Building secure, intelligent systems with code & creativity.</p>
+            <div class="hero-buttons">
+                <a href="#featured" class="btn btn-primary">View Projects</a>
+                <a href="#about-preview" class="btn btn-outline">About Me</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">3.76</span>
+                <span class="stat-label">CGPA</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">11+</span>
+                <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Technologies</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Preview -->
+    <section id="featured" class="featured">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">My Work</span>
+                <h2>Featured <span class="neon-text">Projects</span></h2>
+                <div class="underline"></div>
+            </div>
+            <div class="projects-grid" id="featuredGrid">
+                <div class="project-card" data-project="stegosec">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">🔒</div>
+                            <h3>StegoSec</h3>
+                            <p class="card-tech">React · Crypto · Web Crypto API</p>
+                            <p class="card-desc">Steganography & digital forensics platform</p>
+                            <button class="btn-details" data-project="stegosec">Details →</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-project="tribase">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">🗄️</div>
+                            <h3>TriBase</h3>
+                            <p class="card-tech">Node.js · PostgreSQL · MongoDB · React</p>
+                            <p class="card-desc">Interactive database learning platform</p>
+                            <button class="btn-details" data-project="tribase">Details →</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-project="agentiq">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">🤖</div>
+                            <h3>AgentIQ</h3>
+                            <p class="card-tech">Python · C# · AI Search</p>
+                            <p class="card-desc">AI search algorithms & logical agent</p>
+                            <button class="btn-details" data-project="agentiq">Details →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all">
+                <a href="projects.html" class="btn btn-primary">View All Projects →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section id="about-preview" class="about-preview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Who am I?</span>
+                <h2>About <span class="neon-text">Me</span></h2>
+                <div class="underline"></div>
+            </div>
+            <div class="about-preview-grid">
+                <div class="about-preview-content">
+                    <p class="about-intro-preview">I'm a passionate Computer Science student at UET Lahore, driven by curiosity for security, AI, and full-stack development.</p>
+                    <p>Currently in my 4th semester with a CGPA of 3.76, I've been actively building projects that solve real-world problems — from steganography tools to IoT systems and desktop applications.</p>
+                    <p>I believe in clean code, continuous learning, and technology that empowers people.</p>
+                    <a href="about.html" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Read More →</a>
+                </div>
+                <div class="about-preview-stats">
+                    <div class="stat-circle">
+                        <div class="circle-value">3.76</div>
+                        <div class="circle-label">CGPA</div>
+                    </div>
+                    <div class="stat-circle">
+                        <div class="circle-value">11+</div>
+                        <div class="circle-label">Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Preview -->
+    <section id="skills-preview" class="skills-preview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Expertise</span>
+                <h2>Technical & <span class="neon-text">Design Skills</span></h2>
+                <div class="underline"></div>
+            </div>
+            <div class="skills-showcase">
+                <div class="skill-group">
+                    <h3>💻 Languages</h3>
+                    <div class="skill-pills">
+                        <span>Python</span><span>C++</span><span>C#</span><span>JavaScript</span><span>SQL</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>⚙️ Frameworks & Tools</h3>
+                    <div class="skill-pills">
+                        <span>React</span><span>Node.js</span><span>.NET</span><span>WinForms</span><span>Git</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>🎨 Design</h3>
+                    <div class="skill-pills">
+                        <span>Canva</span><span>Adobe Illustrator</span><span>Adobe Photoshop</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>🔐 Security Concepts</h3>
+                    <div class="skill-pills">
+                        <span>Cryptography</span><span>Steganography</span><span>REST APIs</span><span>IoT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Experience Preview with Skills Marquee Inside -->
+    <section id="experience-preview" class="experience-preview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Experience</span>
+                <h2>Work & <span class="neon-text">Leadership</span></h2>
+                <div class="underline"></div>
+            </div>
+            <div class="exp-preview-grid">
+                <div class="exp-card">
+                    <h3>Graphic Designer & Video Editor Intern</h3>
+                    <p class="exp-company">BinAsghar Digital Marketing Agency</p>
+                    <p>Designed social media content, print media, and branding materials for multiple brands.</p>
+                </div>
+                <div class="exp-card">
+                    <h3>Co-Lead - ACM UET Design Team</h3>
+                    <p class="exp-company">ACM UET Student Chapter</p>
+                    <p>Leading design team for events and social media, ensuring brand consistency.</p>
+                </div>
+            </div>
+            
+            <!-- Skills Marquee - NOW INSIDE the experience section -->
+            <div class="skills-marquee">
+                <div class="marquee-content">
+                    <span>Python</span> • <span>C++</span> • <span>C#</span> • <span>JavaScript</span> • <span>React</span> • 
+                    <span>Node.js</span> • <span>SQL</span> • <span>MongoDB</span> • <span>Canva</span> • 
+                    <span>Illustrator</span> • <span>Photoshop</span> • <span>Git</span>
+                </div>
+                <div class="marquee-content marquee-duplicate">
+                    <span>Python</span> • <span>C++</span> • <span>C#</span> • <span>JavaScript</span> • <span>React</span> • 
+                    <span>Node.js</span> • <span>SQL</span> • <span>MongoDB</span> • <span>Canva</span> • 
+                    <span>Illustrator</span> • <span>Photoshop</span> • <span>Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-neon">
+        <div class="footer-neon-content">
+            <div class="footer-brand">
+                <h2>Wareesha <span class="neon-text">Ameer Khan</span></h2>
+                <p>Building the future, one line of code at a time.</p>
+            </div>
+            <div class="footer-neon-links">
+                <a href="https://github.com/WareeshaAmeerKhan" target="_blank" class="neon-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/wareeshaameerKhan" target="_blank" class="neon-link">LinkedIn</a>
+                <a href="mailto:wareeshaameerkhan@gmail.com" class="neon-link">Email</a>
+            </div>
+        </div>
+        <div class="footer-neon-bottom">
+            <p>© 2026 Wareesha Ameer Khan. All rights reserved.</p>
+        </div>
+        <div class="footer-glow"></div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <h2 id="modalTitle">Project Title</h2>
+                <div class="modal-tech" id="modalTech"></div>
+                <p id="modalDesc"></p>
+                <div class="modal-role" id="modalRole"></div>
+                <a href="https://github.com/WareeshaAmeerKhan" id="modalLink" class="btn btn-primary" target="_blank">View on GitHub →</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
