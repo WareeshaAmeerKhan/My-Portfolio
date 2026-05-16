@@ -84,13 +84,18 @@ const allProjectsList = [
     "pakAnimals", "itecEvent", "pestShooter", "smartNoticeBoard", "waterLevelSensor"
 ];
 
+// Check if device is touch-enabled
+function isTouchDevice() {
+    return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+}
+
 // Loading Bar
 window.addEventListener('beforeunload', () => {
     const loadingBar = document.querySelector('.loading-bar');
     if (loadingBar) loadingBar.style.width = '100%';
 });
 
-// Typing Animation 
+// Typing Animation (No Emojis)
 function startTypingAnimation() {
     const words = [
         "Full-Stack Developer",
@@ -130,26 +135,34 @@ function startTypingAnimation() {
     type();
 }
 
-// Custom Cursor
-const cursor = document.querySelector('.cursor');
-const cursorFollower = document.querySelector('.cursor-follower');
-
-if (cursor && cursorFollower) {
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate(${e.clientX - 5}px, ${e.clientY - 5}px)`;
-        cursorFollower.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`;
-    });
+// Custom Cursor - Only on desktop (non-touch devices)
+if (!isTouchDevice()) {
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
     
-    document.querySelectorAll('a, button, .btn-details').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(1.5)';
-            cursorFollower.style.transform = 'scale(1.5)';
+    if (cursor && cursorFollower) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX - 5}px, ${e.clientY - 5}px)`;
+            cursorFollower.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`;
         });
-        el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursorFollower.style.transform = 'scale(1)';
+        
+        document.querySelectorAll('a, button, .btn-details').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursorFollower.style.transform = 'scale(1.5)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursorFollower.style.transform = 'scale(1)';
+            });
         });
-    });
+    }
+} else {
+    // Hide custom cursor on touch devices
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
+    if (cursor) cursor.style.display = 'none';
+    if (cursorFollower) cursorFollower.style.display = 'none';
 }
 
 // Dark/Light Mode
@@ -216,30 +229,32 @@ if (modal) {
     });
 }
 
-// Magnetic Card Tilt
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
+// Magnetic Card Tilt - Only on desktop
+if (!isTouchDevice()) {
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            const inner = card.querySelector('.card-inner');
+            if (inner) {
+                inner.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+            }
+        });
         
-        const inner = card.querySelector('.card-inner');
-        if (inner) {
-            inner.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-        }
+        card.addEventListener('mouseleave', () => {
+            const inner = card.querySelector('.card-inner');
+            if (inner) {
+                inner.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            }
+        });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        const inner = card.querySelector('.card-inner');
-        if (inner) {
-            inner.style.transform = 'rotateY(0deg) rotateX(0deg)';
-        }
-    });
-});
+}
 
 // Load projects on projects page
 if (window.location.pathname.includes('projects.html')) {
@@ -275,30 +290,32 @@ if (window.location.pathname.includes('projects.html')) {
             });
         });
         
-        // Re-apply tilt effect to dynamically added cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
+        // Re-apply tilt effect to dynamically added cards (only on desktop)
+        if (!isTouchDevice()) {
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    
+                    const inner = card.querySelector('.card-inner');
+                    if (inner) {
+                        inner.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+                    }
+                });
                 
-                const inner = card.querySelector('.card-inner');
-                if (inner) {
-                    inner.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-                }
+                card.addEventListener('mouseleave', () => {
+                    const inner = card.querySelector('.card-inner');
+                    if (inner) {
+                        inner.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                    }
+                });
             });
-            
-            card.addEventListener('mouseleave', () => {
-                const inner = card.querySelector('.card-inner');
-                if (inner) {
-                    inner.style.transform = 'rotateY(0deg) rotateX(0deg)';
-                }
-            });
-        });
+        }
     }
 }
 
@@ -313,7 +330,6 @@ function getIconForProject(projectId) {
 
 // Scroll Reveal Animation for ALL elements on ALL pages
 function initScrollReveal() {
-    // Select all elements that need animation on all pages
     const revealElements = document.querySelectorAll(
         '.project-card, .stat-circle, .skill-group, .exp-card, ' +
         '.timeline-item, .skill-category, .soft-skills-grid span, ' +
@@ -325,9 +341,7 @@ function initScrollReveal() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-active');
             } else {
-                // Remove class to allow re-animation when scrolling back up
                 entry.target.classList.remove('reveal-active');
-                // Force reflow
                 void entry.target.offsetHeight;
             }
         });
@@ -378,6 +392,14 @@ if (hamburger) {
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
+    
+    // Close menu when clicking a link on mobile
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
 }
 
 // Active Nav Link on Scroll (for homepage)
@@ -401,6 +423,20 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// Download Resume functionality
+const downloadBtn = document.getElementById('downloadResumeBtn');
+if (downloadBtn) {
+    downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const link = document.createElement('a');
+        link.href = 'assets/WareeshaAmeerKhan-Resume.pdf';
+        link.download = 'WareeshaAmeerKhan-Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+}
+
 // Initialize everything on load
 window.addEventListener('load', () => {
     const loadingBar = document.querySelector('.loading-bar');
@@ -420,7 +456,6 @@ window.addEventListener('load', () => {
     initSmoothScroll();
     initPageTransitions();
     
-    // Force a scroll event to trigger any initial animations
     setTimeout(() => {
         window.dispatchEvent(new Event('scroll'));
     }, 100);
