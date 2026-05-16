@@ -50,6 +50,9 @@
             <div class="hero-buttons">
                 <a href="#featured" class="btn btn-primary">View Projects</a>
                 <a href="#about-preview" class="btn btn-outline">About Me</a>
+                <a href="#" class="btn btn-download" id="downloadResumeBtn">
+                    📄 Download Resume
+                </a>
             </div>
         </div>
         <div class="hero-stats">
@@ -183,7 +186,7 @@
         </div>
     </section>
 
-        <!-- Experience Preview with Skills Marquee Inside -->
+    <!-- Experience Preview -->
     <section id="experience-preview" class="experience-preview">
         <div class="container">
             <div class="section-header">
@@ -204,7 +207,7 @@
                 </div>
             </div>
             
-            <!-- Skills Marquee - NOW INSIDE the experience section -->
+            <!-- Skills Marquee -->
             <div class="skills-marquee">
                 <div class="marquee-content">
                     <span>Python</span> • <span>C++</span> • <span>C#</span> • <span>JavaScript</span> • <span>React</span> • 
@@ -228,9 +231,9 @@
                 <p>Building the future, one line of code at a time.</p>
             </div>
             <div class="footer-neon-links">
-                <a href="https://github.com/WareeshaAmeerKhan" target="_blank" class="neon-link">GitHub</a>
-                <a href="https://www.linkedin.com/in/wareeshaameerKhan" target="_blank" class="neon-link">LinkedIn</a>
-                <a href="mailto:wareeshaameerkhan@gmail.com" class="neon-link">Email</a>
+                <a href="https://github.com/WareeshaAmeerKhan" target="_blank" class="neon-link">GitHub | github.com/WareeshaAmeerKhan</a>
+                <a href="https://www.linkedin.com/in/wareeshaameerkhan" target="_blank" class="neon-link">LinkedIn | linkedin.com/in/wareeshaameerkhan</a>
+                <a href="mailto:wareeshaameerkhan@gmail.com" class="neon-link">Email | wareeshaameerkhan@gmail.com</a>
             </div>
         </div>
         <div class="footer-neon-bottom">
@@ -248,11 +251,25 @@
                 <div class="modal-tech" id="modalTech"></div>
                 <p id="modalDesc"></p>
                 <div class="modal-role" id="modalRole"></div>
-                <a href="https://github.com/WareeshaAmeerKhan" id="modalLink" class="btn btn-primary" target="_blank">View on GitHub →</a>
+                <a href="https://www.github.com/WareeshaAmeerKhan" id="modalLink" class="btn btn-primary" target="_blank">View on GitHub →</a>
             </div>
         </div>
     </div>
 
     <script src="js/main.js"></script>
+    <script>
+        // Download Resume functionality
+        document.getElementById('downloadResumeBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create a temporary link to trigger download
+            const link = document.createElement('a');
+            link.href = 'assets/WareeshaAmeerKhan-Resume.pdf';
+            link.download = 'WareeshaAmeerKhan-Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
 </body>
 </html>

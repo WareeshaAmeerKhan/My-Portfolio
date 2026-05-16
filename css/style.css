@@ -307,6 +307,37 @@ body {
     background: transparent;
 }
 
+.btn-download {
+    background: transparent;
+    color: var(--accent-primary);
+    border: 2px solid var(--accent-primary);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background: var(--accent-primary);
+    color: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px var(--accent-primary);
+}
+
+.btn-download::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-download:hover::before {
+    left: 100%;
+}
+
 .btn-outline:hover {
     background: var(--accent-primary);
     color: #000000;
