@@ -90,7 +90,7 @@ window.addEventListener('beforeunload', () => {
     if (loadingBar) loadingBar.style.width = '100%';
 });
 
-// Typing Animation (No Emojis)
+// Typing Animation 
 function startTypingAnimation() {
     const words = [
         "Full-Stack Developer",
