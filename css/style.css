@@ -331,15 +331,14 @@ body {
 }
 
 .btn-outline:hover {
-    background: #000000;
-    color: #ffffff;
+    background: var(--accent-primary);
+    color: #000000;
     transform: translateY(-3px);
-    box-shadow: 0 0 20px #ffffff;
 }
 
 .btn-download {
-    background: var(--accent-primary);
-    color: #000000;
+    background: transparent;
+    color: var(--accent-primary);
     border: 2px solid var(--accent-primary);
     position: relative;
     overflow: hidden;
@@ -734,15 +733,25 @@ body {
     100% { transform: translateX(-100%); }
 }
 
-/* Footer Styles - Completely Rewritten for Mobile */
+/* Footer Styles - With Light Mode Support */
 .footer-neon {
     position: relative;
-    background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
     margin-top: 3rem;
     border-top: 2px solid var(--accent-primary);
     overflow: hidden;
     width: 100%;
     padding: 0;
+    transition: background 0.3s ease;
+}
+
+/* Dark mode specific footer gradient */
+:root .footer-neon {
+    background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
+}
+
+/* Light mode specific footer gradient */
+.light-mode .footer-neon {
+    background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
 }
 
 .footer-glow {
@@ -754,6 +763,10 @@ body {
     background: radial-gradient(circle, rgba(0, 255, 65, 0.08) 0%, transparent 70%);
     animation: footerPulse 4s ease-in-out infinite;
     pointer-events: none;
+}
+
+.light-mode .footer-glow {
+    background: radial-gradient(circle, rgba(0, 143, 28, 0.1) 0%, transparent 70%);
 }
 
 @keyframes footerPulse {
@@ -781,6 +794,7 @@ body {
 .footer-brand h2 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: var(--text-primary);
 }
 
 .footer-brand p {
@@ -829,10 +843,10 @@ body {
     z-index: 1;
     text-align: center;
     padding: 1.5rem 2rem;
-    border-top: 1px solid rgba(0, 255, 65, 0.2);
+    border-top: 1px solid var(--border-color);
     color: var(--text-secondary);
     font-size: 0.8rem;
-    background: rgba(0, 0, 0, 0.3);
+    background: transparent;
 }
 
 /* Hide footer links on contact page only */
@@ -1227,7 +1241,46 @@ body.contact-page-body .footer-neon-content {
     transform: translateY(-3px);
 }
 
-.experience-card,
+.experience-card {
+    background: var(--bg-elevated);
+    padding: 1.8rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.experience-card.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.experience-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateX(10px);
+}
+
+.experience-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.exp-date {
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.experience-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Leadership Section Styles */
 .leadership-card {
     background: var(--bg-elevated);
     padding: 1.8rem;
@@ -1240,33 +1293,47 @@ body.contact-page-body .footer-neon-content {
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.experience-card.reveal-active,
 .leadership-card.reveal-active {
     opacity: 1;
     transform: translateY(0);
 }
 
-.experience-card:hover,
 .leadership-card:hover {
     border-color: var(--accent-primary);
     transform: translateX(10px);
 }
 
-.experience-card h3,
-.leadership-card h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
+.leadership-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.exp-date,
+.leadership-card h3 {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
 .leadership-date {
     color: var(--accent-primary);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
     font-family: 'JetBrains Mono', monospace;
 }
 
-.experience-card p,
+.leadership-list {
+    margin-left: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.leadership-list li {
+    margin-bottom: 0.5rem;
+}
+
 .leadership-card p {
     color: var(--text-secondary);
     line-height: 1.7;
@@ -1286,6 +1353,7 @@ body.contact-page-body .footer-neon-content {
 .experience-card:nth-child(1) { transition-delay: 0.1s; }
 .leadership-card:nth-child(1) { transition-delay: 0.1s; }
 .leadership-card:nth-child(2) { transition-delay: 0.2s; }
+.leadership-card:nth-child(3) { transition-delay: 0.3s; }
 
 /* Page Transitions */
 body {
@@ -1532,7 +1600,7 @@ body {
         font-size: 0.7rem;
     }
     
-    /* Footer Mobile - Completely Responsive */
+    /* Footer Mobile */
     .footer-neon {
         margin-top: 2rem;
     }
@@ -1685,8 +1753,18 @@ body {
     }
     
     .experience-card p,
-    .leadership-card p {
+    .leadership-card p,
+    .leadership-list li {
         font-size: 0.8rem;
+    }
+    
+    .leadership-header {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .leadership-list {
+        margin-left: 1rem;
     }
     
     /* Projects Page Mobile */
@@ -1775,5 +1853,22 @@ body {
     
     .footer-neon-bottom p {
         font-size: 0.6rem;
+    }
+    
+    /* Leadership Small Phones */
+    .leadership-card {
+        padding: 0.8rem;
+    }
+    
+    .leadership-card h3 {
+        font-size: 0.85rem;
+    }
+    
+    .leadership-date {
+        font-size: 0.6rem;
+    }
+    
+    .leadership-list li {
+        font-size: 0.75rem;
     }
 }
